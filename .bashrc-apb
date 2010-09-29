@@ -1,0 +1,9 @@
+PS1="\\[\\e[1m\\]\\[\\e[32m\\]\\u@\\h\\[\\e[36m\\]:\\[\\e[33m\\]\\w\\[\\e[0m\\]\\n\\[\\e[1m\\]\\[\\e[36m\\]\\$\\[\\e[0m\\] "
+PS2="\\[\\e[1m\\]\\[\\e[36m\\]>\\[\\e[0m\\] "
+
+export GREP_OPTIONS='--color=auto'
+export ACK_COLOR_FILENAME='underline bold cyan'
+export ACK_COLOR_MATCH='underline bold yellow'
+
+export GPGKEY="A902A3A9"
+

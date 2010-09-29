@@ -1,0 +1,21 @@
+startup_message off
+defhstatus "screen: ^En (^Et)"
+#sorendition 40 43 
+sorendition "=s Wb"
+#hardstatus alwaysignore
+#hardstatus alwayslastline " %H | %C%a | %t | %w "
+#hardstatus alwayslastline '%{g}[ %{= bW}%H %{g}][%= %{= bw}%?%-Lw%?%{r} (%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{bW} %d/%m/%Y %C%a %{g}]'
+
+# http://old.nabble.com/Hardstatus-fu:-truncating-padding-td26644222.html
+hardstatus alwayslastline '%{= bg}[ %{W}%H %{g}][%{= bw}%L=%=%-Lw%45L>%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%+Lw%=%{g}%-21=][%{bW} %d/%m/%Y %c %{g}]'
+
+#termcapinfo xterm ti@:te@
+
+bind ' ' windowlist -b
+
+# use C-a tab
+#bind j focus down
+#bind k focus up
+
+unsetenv SSH_AUTH_SOCK
+setenv SSH_AUTH_SOCK $HOME/.screen/ssh-auth-sock.$HOSTNAME

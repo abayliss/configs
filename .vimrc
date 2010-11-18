@@ -21,6 +21,9 @@ set foldlevel=999
 hi Folded guifg=white
 set visualbell
 
+set directory=$HOME/.vimswap/
+
+" http://vim.wikia.com/wiki/Automatically_set_screen_title
 if &term == "screen"
     set t_ts=k
     set t_fs=\

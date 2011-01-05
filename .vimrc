@@ -23,6 +23,8 @@ set visualbell
 
 set directory=$HOME/.vimswap/
 
+let g:netrw_liststyle = 3
+
 " http://vim.wikia.com/wiki/Automatically_set_screen_title
 if &term == "screen"
     set t_ts=k
@@ -112,7 +114,7 @@ if v:progname =~? "gvim"
 
     set guifont=ProFontWindows\ 9
 
-    set lines=60
+    set lines=65
     set columns=160
 
     set clipboard=unnamed

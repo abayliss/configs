@@ -1,6 +1,32 @@
 PS1="\\[\\e[1m\\]\\[\\e[32m\\]\\u@\\h\\[\\e[36m\\]:\\[\\e[33m\\]\\w\\[\\e[0m\\]\\n\\[\\e[1m\\]\\[\\e[36m\\]\\$\\[\\e[0m\\] "
 PS2="\\[\\e[1m\\]\\[\\e[36m\\]>\\[\\e[0m\\] "
 
+# make ssh-agent work within screen sessions (also see .screenrc)
+_ssh_auth_save() {
+    ln -sf "$SSH_AUTH_SOCK" "$HOME/.screen/ssh-auth-sock.$HOSTNAME"
+}
+alias screen='_ssh_auth_save ; screen'
+
+# set screen titles as well as xterm titles
+case $TERM in
+    xterm*|rxvt*)
+        PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD/$HOME/~}\007"'
+    ;;  
+    screen*)
+        #PROMPT_COMMAND='echo -ne "\ek`basename ${PWD/$HOME/~}`\e\\"'
+        PROMPT_COMMAND='echo -ne "\ek`hostname -s`:${PWD/#$HOME/~}\e\\"'
+        #PROMPT_COMMAND='echo -ne "\ek${PWD}\e\\"'
+    ;;  
+    *)  
+    ;;  
+esac
+
+# set an arbitrary xterm title
+function termtitle {
+    echo "Have you unset PROMPT_COMMAND?"
+    echo -ne "\033]0;$1\007"
+}
+
 export GREP_OPTIONS='--color=auto'
 export ACK_COLOR_FILENAME='underline bold cyan'
 export ACK_COLOR_MATCH='underline bold yellow'

@@ -36,63 +36,44 @@ endif
 "- Tabbing settings ----------------------------------------
 
 function! TabbedTabbing()
-	set noexpandtab
-	set tabstop=4
-	set shiftwidth=4
-	set softtabstop=0
+    set noexpandtab
+    set tabstop=4
+    set shiftwidth=4
+    set softtabstop=0
 endfunction
 
 function! SpacedTabbing()
-	set expandtab
-	set tabstop=4
-	set shiftwidth=4
-	set softtabstop=4
+    set expandtab
+    set tabstop=4
+    set shiftwidth=4
+    set softtabstop=4
 endfunction
 
 call SpacedTabbing()
 
-"- Toggle showing tabls and trailing spaces ----------------
+"- Toggles ------------------------------------------------
 
-map <leader>t :call ShowTabs()<CR>
+" tabs and trailing spaces
+set list listchars=tab:»\ ,trail:·
+map <leader>t :set list!<CR>
 
-function! ShowTabs()
-	set list listchars=tab:»\ ,trail:·
-    map <leader>t :call DontShowTabs()<CR>
-endfunction
-
-function! DontShowTabs()
-	set nolist
-    map <leader>t :call ShowTabs()<CR>
-endfunction
+" line numbers
+map <leader>n :set number!<CR>
 
 "- Toggle mouse --------------------------------------------
 
 map mo :call MouseOff()<CR>
 
 function! MouseOn()
-	set mouse=a
-	map mo :call MouseOff()<CR>
-	set mouse
+    set mouse=a
+    map mo :call MouseOff()<CR>
+    set mouse
 endfunction
 
 function! MouseOff()
-	set mouse=
-	map mo :call MouseOn()<CR>
-	set mouse
-endfunction
-
-"- Toggle line numbers -------------------------------------
-
-map <leader>n :call DontShowNumbers()<CR>
-
-function! ShowNumbers()
-    set number
-    map <leader>n :call DontShowNumbers()<CR>
-endfunction
-
-function! DontShowNumbers()
-    set nonumber
-    map <leader>n :call ShowNumbers()<CR>
+    set mouse=
+    map mo :call MouseOn()<CR>
+    set mouse
 endfunction
 
 "- Other ---------------------------------------------------
@@ -124,7 +105,6 @@ if v:progname =~? "gvim"
     amenu My\ Stuff.Tabbed\ Tabbing :call TabbedTabbing()<CR>
     amenu My\ Stuff.Spaced\ Tabbing :call SpacedTabbing()<CR>
     amenu My\ Stuff.Set\ Brace\ Folding :call SetBraceFolding()<CR>
-    amenu My\ Stuff.Show\ tabs\ and\ trailing\ whitespace :set list listchars=tab:»\ ,trail:·<CR>
-    amenu My\ Stuff.Don't\ show\ tabs\ and\ trailing\ whitespace :set nolist<CR>
+    amenu My\ Stuff.Toggle\ list :set list!<CR>
 
 endif

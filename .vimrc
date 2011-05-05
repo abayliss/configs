@@ -25,6 +25,8 @@ set directory=$HOME/.vimswap/
 
 let g:netrw_liststyle = 3
 
+let mapleader=","
+
 " http://vim.wikia.com/wiki/Automatically_set_screen_title
 if &term == "screen"
     set t_ts=k
@@ -51,16 +53,16 @@ call SpacedTabbing()
 
 "- Toggle showing tabls and trailing spaces ----------------
 
-map ,t :call ShowTabs()<CR>
+map <leader>t :call ShowTabs()<CR>
 
 function! ShowTabs()
 	set list listchars=tab:»\ ,trail:·
-    map ,t :call DontShowTabs()<CR>
+    map <leader>t :call DontShowTabs()<CR>
 endfunction
 
 function! DontShowTabs()
 	set nolist
-    map ,t :call ShowTabs()<CR>
+    map <leader>t :call ShowTabs()<CR>
 endfunction
 
 "- Toggle mouse --------------------------------------------
@@ -81,26 +83,26 @@ endfunction
 
 "- Toggle line numbers -------------------------------------
 
-map ,n :call DontShowNumbers()<CR>
+map <leader>n :call DontShowNumbers()<CR>
 
 function! ShowNumbers()
     set number
-    map ,n :call DontShowNumbers()<CR>
+    map <leader>n :call DontShowNumbers()<CR>
 endfunction
 
 function! DontShowNumbers()
     set nonumber
-    map ,n :call ShowNumbers()<CR>
+    map <leader>n :call ShowNumbers()<CR>
 endfunction
 
 "- Other ---------------------------------------------------
 
 " hash (un)comment a range
-map ,c :s/^/#/<CR>:let @/=''<CR>
-map ,C :s/^#//<CR>:let @/=''<CR>
+map <leader>c :s/^/#/<CR>:let @/=''<CR>
+map <leader>C :s/^#//<CR>:let @/=''<CR>
 
 " clear current search pattern
-map ,s :let @/=''<CR>
+map <leader>s :let @/=''<CR>
 
 "- GUI settings --------------------------------------------
 if v:progname =~? "gvim"
@@ -112,10 +114,10 @@ if v:progname =~? "gvim"
     hi Folded guibg=bg guifg=white
     hi PmenuSel guifg=white
 
-    set guifont=ProFontWindows\ 9
+    set guifont=Consolas\ 10
 
-    set lines=65
-    set columns=160
+    set lines=55
+    set columns=140
 
     set clipboard=unnamed
 

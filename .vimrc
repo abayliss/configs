@@ -60,7 +60,7 @@ call SpacedTabbing()
 
 " tabs and trailing spaces
 set list listchars=tab:»\ ,trail:·
-map <leader>t :set list!<CR>
+map <leader>l :set list!<CR>
 
 " line numbers
 map <leader>n :set number!<CR>
@@ -91,6 +91,7 @@ map <leader>C :s/^#//<CR>:let @/=''<CR>
 map <leader>s :let @/=''<CR>
 
 map <silent> <leader>b :NERDTreeToggle<CR>
+map <silent> <leader>t :TlistToggle<CR>
 
 "- GUI settings --------------------------------------------
 if v:progname =~? "gvim"

@@ -9,7 +9,15 @@ sorendition "=s Wb"
 # http://old.nabble.com/Hardstatus-fu:-truncating-padding-td26644222.html
 hardstatus alwayslastline '%{= bg}[ %{W}%H %{g}][%{= bw}%L=%=%-Lw%45L>%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%+Lw%=%{g}%-21=][%{bW} %d/%m/%Y %c %{g}]'
 
-#termcapinfo xterm ti@:te@
+# http://frexx.de/xterm-256-notes/
+# terminfo and termcap for nice 256 color terminal
+# allow bold colors - necessary for some reason
+attrcolor b ".I"
+# tell screen how to set colors. AB = background, AF=foreground
+termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+# erase background with current bg color
+defbce "on"
+
 
 bind ' ' windowlist -b
 

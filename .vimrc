@@ -4,8 +4,6 @@ call pathogen#helptags()
 filetype plugin indent on
 
 syntax on
-"hi Comment  ctermfg=4
-"hi Constant cterm=bold
 set bg=dark
 
 " makes mouse work under screen!
@@ -23,7 +21,6 @@ let perl_fold=1
 "let perl_fold_blocks=1
 set foldmethod=syntax
 set foldlevel=999
-hi Folded guifg=white
 set visualbell
 
 set directory=$HOME/.vimswap/
@@ -59,7 +56,7 @@ call SpacedTabbing()
 "- Toggles ------------------------------------------------
 
 " tabs and trailing spaces
-set list listchars=tab:»\ ,trail:·
+set listchars=tab:»\ ,trail:·
 map <leader>l :set list!<CR>
 
 " line numbers
@@ -93,15 +90,10 @@ map <leader>s :let @/=''<CR>
 map <silent> <leader>b :NERDTreeToggle<CR>
 map <silent> <leader>t :TlistToggle<CR>
 
-"- GUI settings --------------------------------------------
-if v:progname =~? "gvim"
+"- GUI only settings ---------------------------------------
+if has ("gui_running")
 
     set mousehide " Hide the mouse when typing text
-
-    colorscheme darkblue
-    hi Normal guifg=white
-    hi Folded guibg=bg guifg=white
-    hi PmenuSel guifg=white
 
     set guifont=Consolas\ 10
 
@@ -115,4 +107,11 @@ if v:progname =~? "gvim"
     amenu My\ Stuff.Set\ Brace\ Folding :call SetBraceFolding()<CR>
     amenu My\ Stuff.Toggle\ list :set list!<CR>
 
+"- CLI only settings ---------------------------------------
+else
+
+    set t_Co=256
+
 endif
+
+colorscheme xoria256

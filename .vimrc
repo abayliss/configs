@@ -67,17 +67,17 @@ map <leader>n :set number!<CR>
 
 "- Toggle mouse --------------------------------------------
 
-map mo :call MouseOff()<CR>
+map <leader>m :call MouseOff()<CR>
 
 function! MouseOn()
     set mouse=a
-    map mo :call MouseOff()<CR>
+    map <leader>m :call MouseOff()<CR>
     set mouse
 endfunction
 
 function! MouseOff()
     set mouse=
-    map mo :call MouseOn()<CR>
+    map <leader>m :call MouseOn()<CR>
     set mouse
 endfunction
 
@@ -89,6 +89,8 @@ map <leader>C :s/^#//<CR>:let @/=''<CR>
 
 " clear current search pattern
 map <leader>s :let @/=''<CR>
+
+map <silent> <leader>b :NERDTreeToggle<CR>
 
 "- GUI settings --------------------------------------------
 if v:progname =~? "gvim"

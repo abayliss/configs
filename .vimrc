@@ -95,6 +95,7 @@ if has ("gui_running")
 
     set mousehide " Hide the mouse when typing text
 
+    colorscheme xoria256
     set guifont=Consolas\ 10
 
     set lines=55
@@ -110,8 +111,13 @@ if has ("gui_running")
 "- CLI only settings ---------------------------------------
 else
 
-    set t_Co=256
+    if &term =~ "^xterm" || &term =~ "^screen" || &term =~ "256"
+
+        set t_Co=256
+        colorscheme xoria256
+    
+    endif
 
 endif
 
-colorscheme xoria256
+hi Folded ctermbg=NONE guibg=NONE

@@ -111,7 +111,7 @@ if has ("gui_running")
 "- CLI only settings ---------------------------------------
 else
 
-    if &term =~ "^xterm" || &term =~ "256"
+    if &term =~ "^xterm" || &term =~ "^screen" || &term =~ "256"
         set t_Co=256
     endif
     if &t_Co == 256

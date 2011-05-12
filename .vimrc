@@ -95,7 +95,8 @@ if has ("gui_running")
 
     set mousehide " Hide the mouse when typing text
 
-    colorscheme 256-grayvim
+    let g:solarized_contrast="high"
+    colorscheme solarized
     set guifont=Consolas\ 10
 
     set lines=55
@@ -120,4 +121,4 @@ else
 
 endif
 
-hi Folded ctermbg=NONE guibg=NONE
+hi Folded cterm=Bold gui=Bold ctermbg=NONE guibg=NONE

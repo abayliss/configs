@@ -30,7 +30,7 @@ let g:netrw_liststyle = 3
 let mapleader=","
 
 " http://vim.wikia.com/wiki/Automatically_set_screen_title
-if &term == "screen"
+if &term =~ "^screen"
     set t_ts=k
     set t_fs=\
 endif
@@ -89,6 +89,9 @@ map <leader>s :let @/=''<CR>
 
 map <silent> <leader>b :NERDTreeToggle<CR>
 map <silent> <leader>t :TlistToggle<CR>
+
+" cd to directory of current file
+map <leader>fd :chdir %:p:h<CR>
 
 "- GUI only settings ---------------------------------------
 if has ("gui_running")

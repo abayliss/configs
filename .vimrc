@@ -99,8 +99,7 @@ if has ("gui_running")
 
     set mousehide " Hide the mouse when typing text
 
-    let g:solarized_contrast="high"
-    colorscheme solarized
+    colorscheme wombat
     set guifont=Consolas\ 10
 
     set lines=55
@@ -120,7 +119,7 @@ else
         set t_Co=256
     endif
     if &t_Co == 256
-        colorscheme 256-grayvim
+        colorscheme wombat256
     endif
 
 endif

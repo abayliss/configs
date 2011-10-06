@@ -91,7 +91,10 @@ map <leader>C :s/^#//<CR>:let @/=''<CR>
 " clear current search pattern
 map <leader>s :let @/=''<CR>
 
-map <silent> <leader>b :NERDTreeToggle<CR>
+map <silent> <leader>ft :NERDTreeToggle<CR>
+map <silent> <leader>ff :NERDTreeFind<CR>
+map <silent> <leader>fm :NERDTreeMirror<CR>
+
 map <silent> <leader>t :TlistToggle<CR>
 
 " cd to directory of current file

@@ -118,6 +118,8 @@ if has ("gui_running")
     set columns=140
 
     set clipboard=unnamed
+    set guioptions-=T " no toolbar
+    set guioptions-=t " no tearable menus
 
     map <C-Right> :tabnext<CR>
     map <C-Left>  :tabprevious<CR>

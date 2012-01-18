@@ -106,6 +106,12 @@ let Tlist_Compact_Format=1
 let Tlist_Enable_Fold_Column=0
 let Tlist_Show_Menu=1
 
+"minibuxexplorer
+
+let g:miniBufExplMapCTabSwitchBufs = 1 " FIXME: this doesn't work in console vim
+let g:miniBufExplUseSingleClick = 1
+let g:miniBufExplMapWindowNavArrows = 1
+
 "- GUI only settings ---------------------------------------
 if has ("gui_running")
 
@@ -121,8 +127,8 @@ if has ("gui_running")
     set guioptions-=T " no toolbar
     set guioptions-=t " no tearable menus
 
-    map <C-Right> :tabnext<CR>
-    map <C-Left>  :tabprevious<CR>
+    "map <C-Right> :tabnext<CR>
+    "map <C-Left>  :tabprevious<CR>
 
     amenu My\ Stuff.Tabbed\ Tabbing :call TabbedTabbing()<CR>
     amenu My\ Stuff.Spaced\ Tabbing :call SpacedTabbing()<CR>
@@ -139,8 +145,8 @@ else
         colorscheme molokai
     endif
 
-    map [1;5C :tabnext<CR>
-    map [1;5D :tabprevious<CR>
+    "map [1;5C :tabnext<CR>
+    "map [1;5D :tabprevious<CR>
 
 endif
 

@@ -151,3 +151,4 @@ else
 endif
 
 hi Folded cterm=Bold gui=Bold ctermbg=NONE guibg=NONE
+hi link MBENormal LineNr

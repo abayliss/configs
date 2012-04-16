@@ -7,18 +7,19 @@ _ssh_auth_save() {
 }
 alias screen='_ssh_auth_save ; screen'
 
-# set screen titles as well as xterm titles
+# set screen/tmux titles as well as xterm titles
 case $TERM in
     xterm*|rxvt*)
-        PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD/$HOME/~}\007"'
-    ;;  
+        PROMPT_COMMAND='echo -ne "\e]0;${USER}@${HOSTNAME}:${PWD/$HOME/~}\e\\"'
+    ;;
     screen*)
-        #PROMPT_COMMAND='echo -ne "\ek`basename ${PWD/$HOME/~}`\e\\"'
-        PROMPT_COMMAND='echo -ne "\ek`hostname -s`:${PWD/#$HOME/~}\e\\"'
-        #PROMPT_COMMAND='echo -ne "\ek${PWD}\e\\"'
-    ;;  
-    *)  
-    ;;  
+        PROMPT_COMMAND='echo -ne "\ek${HOSTNAME}:${PWD/$HOME/~}\e\\"'
+        if [ "$TMUX" != "" ]; then
+            PROMPT_COMMAND='echo -ne "\e]2;${HOSTNAME}:${PWD/$HOME/~}\e\\"'
+        fi
+    ;;
+    *)
+    ;;
 esac
 
 # set an arbitrary xterm title
@@ -32,4 +33,6 @@ export ACK_COLOR_FILENAME='underline bold cyan'
 export ACK_COLOR_MATCH='underline bold yellow'
 
 export GPGKEY="A902A3A9"
+
+alias tmux="tmux -2"
 

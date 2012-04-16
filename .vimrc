@@ -6,8 +6,6 @@ filetype plugin indent on
 syntax on
 set bg=dark
 
-" makes mouse work under screen!
-set ttymouse=xterm2
 set mouse=a
 
 set showmatch
@@ -33,7 +31,14 @@ let mapleader=","
 
 " http://vim.wikia.com/wiki/Automatically_set_screen_title
 if &term =~ "^screen"
+    set ttymouse=xterm2
     set t_ts=k
+    set t_fs=\
+endif
+
+if $TMUX != ""
+    set ttymouse=xterm
+    set t_ts=]2;
     set t_fs=\
 endif
 

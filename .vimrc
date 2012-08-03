@@ -23,6 +23,8 @@ set foldmethod=syntax
 set foldlevel=999
 set visualbell
 
+set scrolloff=3
+
 set directory=$HOME/.vimswap/
 
 let g:netrw_liststyle = 3
@@ -123,7 +125,11 @@ if has ("gui_running")
     set mousehide " Hide the mouse when typing text
 
     colorscheme molokai
-    set guifont=Consolas\ 10
+    if v:progname =~? "qvim"
+        set guifont=Ubuntu\ Mono\ 10
+    else
+        set guifont=Consolas\ 10
+    endif
 
     set lines=55
     set columns=140
@@ -149,6 +155,8 @@ else
     if &t_Co == 256
         colorscheme molokai
     endif
+
+    set ttyfast
 
     "map [1;5C :tabnext<CR>
     "map [1;5D :tabprevious<CR>

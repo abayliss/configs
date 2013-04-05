@@ -1,0 +1,4 @@
+[
+    { "keys": ["ctrl+k", "ctrl+m"], "command": "toggle_minimap" },
+    { "keys": ["ctrl+k", "ctrl+w"], "command": "toggle_setting", "args": {"setting": "word_wrap"} }
+]

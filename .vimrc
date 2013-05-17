@@ -124,12 +124,8 @@ if has ("gui_running")
 
     set mousehide " Hide the mouse when typing text
 
-    colorscheme molokai
-    if v:progname =~? "qvim"
-        set guifont=Ubuntu\ Mono\ 10
-    else
-        set guifont=Consolas\ 10
-    endif
+    colorscheme solarized
+    set guifont=Ubuntu\ Mono\ 10
 
     set lines=55
     set columns=140

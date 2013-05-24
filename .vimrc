@@ -91,10 +91,6 @@ endfunction
 
 "- Other ---------------------------------------------------
 
-" hash (un)comment a range
-map <leader>c :s/^/#/<CR>:let @/=''<CR>
-map <leader>C :s/^#//<CR>:let @/=''<CR>
-
 " clear current search pattern
 map <leader>s :let @/=''<CR>
 
@@ -107,6 +103,10 @@ map <silent> <leader>t :TlistToggle<CR>
 " cd to directory of current file
 map <leader>fd :chdir %:p:h<CR>
 
+function! LessObtrusiveFolds()
+    hi Folded cterm=Bold gui=Bold ctermbg=NONE guibg=NONE
+endfunction
+
 "- Plugin settings -----------------------------------------
 " taglist
 let Tlist_Compact_Format=1
@@ -114,10 +114,14 @@ let Tlist_Enable_Fold_Column=0
 let Tlist_Show_Menu=1
 
 "minibuxexplorer
-
 let g:miniBufExplMapCTabSwitchBufs = 1 " FIXME: this doesn't work in console vim
 let g:miniBufExplUseSingleClick = 1
 let g:miniBufExplMapWindowNavArrows = 1
+
+"ctrlp
+let g:ctrlp_by_filename = 1
+let g:ctrlp_regexp = 1
+let g:ctrlp_clear_cache_on_exit = 0
 
 "- GUI only settings ---------------------------------------
 if has ("gui_running")
@@ -141,6 +145,7 @@ if has ("gui_running")
     amenu My\ Stuff.Spaced\ Tabbing :call SpacedTabbing()<CR>
     amenu My\ Stuff.Set\ Brace\ Folding :call SetBraceFolding()<CR>
     amenu My\ Stuff.Toggle\ list :set list!<CR>
+    amenu My\ Stuff.Less\ Obtrusive\ Folds :call LessObtrusiveFolds()<CR>
 
 "- CLI only settings ---------------------------------------
 else
@@ -159,5 +164,5 @@ else
 
 endif
 
-hi Folded cterm=Bold gui=Bold ctermbg=NONE guibg=NONE
+call LessObtrusiveFolds()
 hi link MBENormal LineNr

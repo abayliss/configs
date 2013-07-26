@@ -103,6 +103,10 @@ map <silent> <leader>t :TlistToggle<CR>
 " cd to directory of current file
 map <leader>fd :chdir %:p:h<CR>
 
+map <leader>cc :NeoComplCacheToggle<CR>
+inoremap <expr> <C-g> neocomplcache#undo_completion()
+inoremap <expr> <C-l> neocomplcache#complete_common_string()
+
 function! LessObtrusiveFolds()
     hi Folded cterm=Bold gui=Bold ctermbg=NONE guibg=NONE
 endfunction
@@ -119,9 +123,15 @@ let g:miniBufExplUseSingleClick = 1
 let g:miniBufExplMapWindowNavArrows = 1
 
 "ctrlp
+let g:ctrlp_max_files = 0
 let g:ctrlp_by_filename = 1
 let g:ctrlp_regexp = 1
 let g:ctrlp_clear_cache_on_exit = 0
+let g:ctrlp_lazy_update = 1
+
+" Use neocomplcache.
+let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_enable_auto_select = 1
 
 "- GUI only settings ---------------------------------------
 if has ("gui_running")

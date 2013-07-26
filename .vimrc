@@ -12,7 +12,8 @@ set showmatch
 set hlsearch
 set title
 set number
-set wildmode=list:longest
+set wildmenu
+set wildmode=longest:full
 set backspace=2 " indent,eol,start
 set ruler
 
@@ -89,6 +90,24 @@ function! MouseOff()
     set mouse?
 endfunction
 
+"- Font sizing ---------------------------------------------
+
+if has ("gui_running")
+
+    function! LargerFont()
+        let font_parts = split(&guifont)
+        let font_parts[-1] = font_parts[-1] + 1
+        let &guifont = join(font_parts, ' ')
+    endfunction
+
+    function! SmallerFont()
+        let font_parts = split(&guifont)
+        let font_parts[-1] = font_parts[-1] - 1
+        let &guifont = join(font_parts, ' ')
+    endfunction
+
+endif
+
 "- Other ---------------------------------------------------
 
 " clear current search pattern
@@ -103,7 +122,7 @@ map <silent> <leader>t :TlistToggle<CR>
 " cd to directory of current file
 map <leader>fd :chdir %:p:h<CR>
 
-map <leader>cc :NeoComplCacheToggle<CR>
+map <leader>ct :NeoComplCacheToggle<CR>
 inoremap <expr> <C-g> neocomplcache#undo_completion()
 inoremap <expr> <C-l> neocomplcache#complete_common_string()
 
@@ -154,8 +173,10 @@ if has ("gui_running")
     amenu My\ Stuff.Tabbed\ Tabbing :call TabbedTabbing()<CR>
     amenu My\ Stuff.Spaced\ Tabbing :call SpacedTabbing()<CR>
     amenu My\ Stuff.Set\ Brace\ Folding :call SetBraceFolding()<CR>
-    amenu My\ Stuff.Toggle\ list :set list!<CR>
     amenu My\ Stuff.Less\ Obtrusive\ Folds :call LessObtrusiveFolds()<CR>
+    amenu My\ Stuff.-sep1- :
+    amenu My\ Stuff.Larger\ Font :call LargerFont()<CR>
+    amenu My\ Stuff.Smaller\ Font :call SmallerFont()<CR>
 
 "- CLI only settings ---------------------------------------
 else

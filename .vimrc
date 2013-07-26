@@ -12,8 +12,7 @@ set showmatch
 set hlsearch
 set title
 set number
-set wildmenu
-set wildmode=longest:full
+set wildmode=list:longest
 set backspace=2 " indent,eol,start
 set ruler
 
@@ -122,10 +121,6 @@ map <silent> <leader>t :TlistToggle<CR>
 " cd to directory of current file
 map <leader>fd :chdir %:p:h<CR>
 
-map <leader>ct :NeoComplCacheToggle<CR>
-inoremap <expr> <C-g> neocomplcache#undo_completion()
-inoremap <expr> <C-l> neocomplcache#complete_common_string()
-
 function! LessObtrusiveFolds()
     hi Folded cterm=Bold gui=Bold ctermbg=NONE guibg=NONE
 endfunction
@@ -147,10 +142,6 @@ let g:ctrlp_by_filename = 1
 let g:ctrlp_regexp = 1
 let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_lazy_update = 1
-
-" Use neocomplcache.
-let g:neocomplcache_enable_at_startup = 1
-let g:neocomplcache_enable_auto_select = 1
 
 "- GUI only settings ---------------------------------------
 if has ("gui_running")

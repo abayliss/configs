@@ -15,6 +15,7 @@ set number
 set wildmode=list:longest
 set backspace=2 " indent,eol,start
 set ruler
+set laststatus=2
 
 syn sync fromstart
 let perl_fold=1
@@ -142,6 +143,12 @@ let g:ctrlp_by_filename = 1
 let g:ctrlp_regexp = 1
 let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_lazy_update = 1
+
+" airline
+let g:airline_left_sep = "" 
+let g:airline_right_sep = ""
+let g:airline_detect_whitespace = 0
+let g:airline_section_b = "%n"
 
 "- GUI only settings ---------------------------------------
 if has ("gui_running")

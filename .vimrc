@@ -183,6 +183,7 @@ else
         set t_Co=256
     endif
     if &t_Co == 256
+        let g:rehash256 = 1
         colorscheme molokai
     endif
 

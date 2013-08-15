@@ -1,11 +1,9 @@
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 execute pathogen#infect()
 filetype plugin indent on
-
 syntax on
-set bg=dark
 
-set mouse=a
+set bg=dark
 
 set showmatch
 set hlsearch
@@ -33,13 +31,11 @@ let mapleader=","
 
 " http://vim.wikia.com/wiki/Automatically_set_screen_title
 if &term =~ "^screen"
-    set ttymouse=xterm2
     set t_ts=k
     set t_fs=\
 endif
 
 if $TMUX != ""
-    set ttymouse=xterm
     set t_ts=]2;
     set t_fs=\
 endif
@@ -91,7 +87,7 @@ endfunction
 
 "- Font sizing ---------------------------------------------
 
-if has ("gui_running")
+if has("gui_running")
 
     function! LargerFont()
         let font_parts = split(&guifont)
@@ -150,7 +146,7 @@ let g:airline_detect_whitespace = 0
 let g:airline_section_b = "%n"
 
 "- GUI only settings ---------------------------------------
-if has ("gui_running")
+if has("gui_running")
 
     set mousehide " Hide the mouse when typing text
 
@@ -190,6 +186,13 @@ else
 
     "map [1;5C :tabnext<CR>
     "map [1;5D :tabprevious<CR>
+
+    set mouse=a
+    if has("mouse_sgr")
+        set ttymouse=sgr
+    else
+        set ttymouse=xterm2
+    endif
 
 endif
 

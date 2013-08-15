@@ -23,7 +23,15 @@ set visualbell
 
 set scrolloff=3
 
-set directory=$HOME/.vimswap/
+if has("win32")
+    let backup_dir=$HOME . "/_vimswap//"
+else
+    let backup_dir=$HOME . "/.vimswap//"
+endif
+if !isdirectory(backup_dir)
+    call mkdir(backup_dir, "p")
+endif
+let &directory=backup_dir
 
 let g:netrw_liststyle = 3
 
@@ -151,7 +159,11 @@ if has("gui_running")
     set mousehide " Hide the mouse when typing text
 
     colorscheme solarized
-    set guifont=Ubuntu\ Mono\ 10
+    if has("win32")
+        set guifont=Consolas:h10
+    else
+        set guifont=Ubuntu\ Mono\ 10
+    endif
 
     set lines=55
     set columns=140

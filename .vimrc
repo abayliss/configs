@@ -16,12 +16,16 @@ set laststatus=2
 
 syn sync fromstart
 let perl_fold=1
+let perl_fold_anonymous_subs=1
 "let perl_fold_blocks=1
 set foldmethod=syntax
 set foldlevel=999
 set visualbell
 
 set scrolloff=3
+
+set splitbelow
+set splitright
 
 if has("win32")
     let backup_dir=$HOME . "/_vimswap//"
@@ -142,7 +146,6 @@ let g:miniBufExplMapWindowNavArrows = 1
 
 "ctrlp
 let g:ctrlp_max_files = 0
-let g:ctrlp_by_filename = 1
 let g:ctrlp_regexp = 1
 let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_lazy_update = 1
@@ -152,6 +155,7 @@ let g:airline_left_sep = ""
 let g:airline_right_sep = ""
 let g:airline_detect_whitespace = 0
 let g:airline_section_b = "%n"
+let g:airline_theme = "dark"
 
 "- GUI only settings ---------------------------------------
 if has("gui_running")
@@ -209,4 +213,3 @@ else
 endif
 
 call LessObtrusiveFolds()
-hi link MBENormal LineNr

@@ -143,12 +143,15 @@ let Tlist_Show_Menu=1
 let g:miniBufExplMapCTabSwitchBufs = 1 " FIXME: this doesn't work in console vim
 let g:miniBufExplUseSingleClick = 1
 let g:miniBufExplMapWindowNavArrows = 1
+hi link MBEVisibleActiveNormal Identifier
 
 "ctrlp
+let g:ctrlp_cmd = "CtrlPMixed"
 let g:ctrlp_max_files = 0
 let g:ctrlp_regexp = 1
 let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_lazy_update = 1
+let g:ctrlp_follow_symlinks = 1
 
 " airline
 let g:airline_left_sep = "" 

@@ -36,4 +36,4 @@ export GPGKEY="A902A3A9"
 
 alias tmux="tmux -2"
 
-alias add_ssh_keys="for k in ~/.ssh/*id_[dr]sa; do ssh-add \$k ; done; ssh-add -l"
+alias add_ssh_keys="for k in ~/.ssh/*id_{dsa,rsa,ecdsa,ed25519}; do if [ -f \$k ]; then ssh-add \$k; fi; done; ssh-add -l"

@@ -14,7 +14,7 @@ set runtimepath+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 " let Vundle manage Vundle, required
-Plugin 'gmarik/vundle.vim'
+Plugin 'gmarik/Vundle.vim'
 
 " Plugins here
 
@@ -188,7 +188,7 @@ let g:ctrlp_follow_symlinks = 1
 " airline
 let g:airline_left_sep = "" 
 let g:airline_right_sep = ""
-let g:airline_detect_whitespace = 0
+let g:airline#extensions#whitespace#enabled = 1
 let g:airline_section_b = "%n"
 let g:airline_theme = "dark"
 

@@ -1,5 +1,37 @@
-runtime bundle/vim-pathogen/autoload/pathogen.vim
-execute pathogen#infect()
+set nocompatible
+filetype off " must be off before Vundle has run
+
+" inspired by http://erikzaadi.com/2012/03/19/auto-installing-vundle-from-your-vimrc/
+let new_vundle = 0
+if !isdirectory(expand("~/.vim/bundle/Vundle.vim/.git"))
+    silent !mkdir -p ~/.vim/bundle
+    silent !git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+    let new_vundle = 1
+endif
+
+set runtimepath+=~/.vim/bundle/Vundle.vim
+
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/vundle.vim'
+
+" Plugins here
+
+Plugin 'kien/ctrlp.vim'
+Plugin 'fholgado/minibufexpl.vim'
+Plugin 'tomasr/molokai'
+Plugin 'scrooloose/NERDCommenter'
+Plugin 'bling/vim-airline'
+
+call vundle#end()
+
+if new_vundle == 1
+    :BundleInstall
+endif
+
+" Vundle setup done
+
 filetype plugin indent on
 syntax on
 

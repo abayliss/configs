@@ -166,13 +166,9 @@ function! LessObtrusiveFolds()
 endfunction
 
 "- Plugin settings -----------------------------------------
-" taglist
-let Tlist_Compact_Format=1
-let Tlist_Enable_Fold_Column=0
-let Tlist_Show_Menu=1
 
 "minibuxexplorer
-let g:miniBufExplMapCTabSwitchBufs = 1 " FIXME: this doesn't work in console vim
+let g:miniBufExplBRSplit = 0
 let g:miniBufExplUseSingleClick = 1
 let g:miniBufExplMapWindowNavArrows = 1
 hi link MBEVisibleActiveNormal Identifier
@@ -188,7 +184,6 @@ let g:ctrlp_follow_symlinks = 1
 " airline
 let g:airline_left_sep = "" 
 let g:airline_right_sep = ""
-let g:airline#extensions#whitespace#enabled = 1
 let g:airline_section_b = "%n"
 let g:airline_theme = "dark"
 

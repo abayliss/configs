@@ -20,9 +20,12 @@ Plugin 'gmarik/Vundle.vim'
 
 Plugin 'kien/ctrlp.vim'
 Plugin 'fholgado/minibufexpl.vim'
-Plugin 'tomasr/molokai'
-Plugin 'scrooloose/NERDCommenter'
 Plugin 'bling/vim-airline'
+
+Plugin 'tomasr/molokai'
+Plugin 'nanotech/jellybeans.vim'
+
+Plugin 'scrooloose/NERDCommenter'
 
 call vundle#end()
 

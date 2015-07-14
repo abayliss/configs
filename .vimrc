@@ -26,6 +26,8 @@ Plugin 'tomasr/molokai'
 Plugin 'nanotech/jellybeans.vim'
 
 Plugin 'scrooloose/NERDCommenter'
+Plugin 'Shougo/neocomplete.vim'
+Plugin 'Raimondi/delimitMate'
 
 call vundle#end()
 
@@ -190,12 +192,34 @@ let g:airline_right_sep = ""
 let g:airline_section_b = "%n"
 let g:airline_theme = "dark"
 
+" neocomplete
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_smart_case = 1
+let g:neocomplete#enable_auto_select = 1
+
+if !exists('g:neocomplete#sources#omni#input_patterns')
+    let g:neocomplete#sources#omni#input_patterns = {}
+endif
+let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+
+inoremap <expr><TAB> pumvisible() ? "\<Down>" : "\<TAB>"
+
+" delimitMate
+let g:delimitMate_expand_cr = 1
+let g:delimitMate_expand_space = 1
+
+let g:jellybeans_overrides = {
+\    'Search': { 'guifg': '303030', 'guibg': 'f0f000',
+\              'ctermfg': 'Black', 'ctermbg': 'Yellow',
+\              'attr': 'bold' },
+\}
+
 "- GUI only settings ---------------------------------------
 if has("gui_running")
 
     set mousehide " Hide the mouse when typing text
 
-    colorscheme solarized
+    colorscheme jellybeans
     if has("win32")
         set guifont=Consolas:h10
     else
@@ -227,8 +251,7 @@ else
         set t_Co=256
     endif
     if &t_Co == 256
-        let g:rehash256 = 1
-        colorscheme molokai
+        colorscheme jellybeans
     endif
 
     set ttyfast

@@ -18,7 +18,7 @@ Plugin 'gmarik/Vundle.vim'
 
 " Plugins here
 
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'fholgado/minibufexpl.vim'
 Plugin 'bling/vim-airline'
 
@@ -26,7 +26,6 @@ Plugin 'tomasr/molokai'
 Plugin 'nanotech/jellybeans.vim'
 
 Plugin 'scrooloose/NERDCommenter'
-Plugin 'Shougo/neocomplete.vim'
 Plugin 'Raimondi/delimitMate'
 
 call vundle#end()

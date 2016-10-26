@@ -21,6 +21,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'fholgado/minibufexpl.vim'
 Plugin 'bling/vim-airline'
+Plugin 'mhinz/vim-startify'
 
 Plugin 'tomasr/molokai'
 Plugin 'nanotech/jellybeans.vim'

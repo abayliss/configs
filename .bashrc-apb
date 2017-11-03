@@ -28,7 +28,6 @@ function termtitle {
     echo -ne "\033]0;$1\007"
 }
 
-export GREP_OPTIONS='--color=auto'
 export ACK_COLOR_FILENAME='underline bold cyan'
 export ACK_COLOR_MATCH='underline bold yellow'
 

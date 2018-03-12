@@ -29,6 +29,8 @@ Plugin 'nanotech/jellybeans.vim'
 Plugin 'scrooloose/NERDCommenter'
 Plugin 'Raimondi/delimitMate'
 
+Plugin 'haya14busa/incsearch.vim'
+
 call vundle#end()
 
 if new_vundle == 1
@@ -213,6 +215,10 @@ let g:jellybeans_overrides = {
 \              'ctermfg': 'Black', 'ctermbg': 'Yellow',
 \              'attr': 'bold' },
 \}
+
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
 
 "- GUI only settings ---------------------------------------
 if has("gui_running")

@@ -17,13 +17,11 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " Plugins here
-
 Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'fholgado/minibufexpl.vim'
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'mhinz/vim-startify'
 
-Plugin 'tomasr/molokai'
 Plugin 'nanotech/jellybeans.vim'
 
 Plugin 'scrooloose/NERDCommenter'
@@ -192,7 +190,9 @@ let g:ctrlp_follow_symlinks = 1
 let g:airline_left_sep = "" 
 let g:airline_right_sep = ""
 let g:airline_section_b = "%n"
-let g:airline_theme = "dark"
+"let g:airline_theme = "jellybeans"
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
 
 " neocomplete
 let g:neocomplete#enable_at_startup = 1
@@ -255,6 +255,7 @@ else
 
     if &term =~ "^xterm" || &term =~ "^screen" || &term =~ "256"
         set t_Co=256
+        set t_ut=
     endif
     if &t_Co == 256
         colorscheme jellybeans

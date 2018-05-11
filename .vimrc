@@ -1,44 +1,26 @@
 set nocompatible
-filetype off " must be off before Vundle has run
 
-" inspired by http://erikzaadi.com/2012/03/19/auto-installing-vundle-from-your-vimrc/
-let new_vundle = 0
-if !isdirectory(expand("~/.vim/bundle/Vundle.vim/.git"))
-    silent !mkdir -p ~/.vim/bundle
-    silent !git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-    let new_vundle = 1
+if has('nvim')
+    let plug_file = '~/.local/share/nvim/site/autoload/plug.vim'
+else
+    let plug_file = '~/.vim/autoload/plug.vim'
 endif
 
-set runtimepath+=~/.vim/bundle/Vundle.vim
-
-call vundle#begin()
-
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
-
-" Plugins here
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'mhinz/vim-startify'
-
-Plugin 'nanotech/jellybeans.vim'
-
-Plugin 'scrooloose/NERDCommenter'
-Plugin 'Raimondi/delimitMate'
-
-Plugin 'haya14busa/incsearch.vim'
-
-call vundle#end()
-
-if new_vundle == 1
-    :BundleInstall
+if empty(glob(plug_file))
+    silent execute '!curl -fLo '.plug_file.' --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-" Vundle setup done
-
-filetype plugin indent on
-syntax on
+call plug#begin()
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'mhinz/vim-startify'
+Plug 'nanotech/jellybeans.vim'
+Plug 'scrooloose/NERDCommenter'
+Plug 'Raimondi/delimitMate'
+Plug 'haya14busa/incsearch.vim'
+call plug#end()
 
 set bg=dark
 
@@ -269,7 +251,7 @@ else
     set mouse=a
     if has("mouse_sgr")
         set ttymouse=sgr
-    else
+    elseif !has("nvim")
         set ttymouse=xterm2
     endif
 

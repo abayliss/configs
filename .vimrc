@@ -33,6 +33,11 @@ set backspace=2 " indent,eol,start
 set ruler
 set laststatus=2
 
+set expandtab
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+
 syn sync fromstart
 let perl_fold=1
 let perl_fold_anonymous_subs=1
@@ -71,28 +76,10 @@ if $TMUX != ""
     set t_fs=\
 endif
 
-"- Tabbing settings ----------------------------------------
-
-function! TabbedTabbing()
-    set noexpandtab
-    set tabstop=4
-    set shiftwidth=4
-    set softtabstop=0
-endfunction
-
-function! SpacedTabbing()
-    set expandtab
-    set tabstop=4
-    set shiftwidth=4
-    set softtabstop=4
-endfunction
-
-call SpacedTabbing()
-
 "- Toggles ------------------------------------------------
 
 " tabs and trailing spaces
-set listchars=tab:»\ ,trail:·
+set listchars=tab:>\ ,trail:.
 map <leader>l :set list!<CR>:set list?<CR>
 
 " line numbers
@@ -139,12 +126,6 @@ endif
 " clear current search pattern
 map <leader>s :let @/=''<CR>
 
-map <silent> <leader>ft :NERDTreeToggle<CR>
-map <silent> <leader>ff :NERDTreeFind<CR>
-map <silent> <leader>fm :NERDTreeMirror<CR>
-
-map <silent> <leader>t :TlistToggle<CR>
-
 " cd to directory of current file
 map <leader>fd :chdir %:p:h<CR>
 
@@ -153,12 +134,6 @@ function! LessObtrusiveFolds()
 endfunction
 
 "- Plugin settings -----------------------------------------
-
-"minibuxexplorer
-let g:miniBufExplBRSplit = 0
-let g:miniBufExplUseSingleClick = 1
-let g:miniBufExplMapWindowNavArrows = 1
-hi link MBEVisibleActiveNormal Identifier
 
 "ctrlp
 let g:ctrlp_cmd = "CtrlPMixed"
@@ -175,18 +150,6 @@ let g:airline_section_b = "%n"
 "let g:airline_theme = "jellybeans"
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
-
-" neocomplete
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_smart_case = 1
-let g:neocomplete#enable_auto_select = 1
-
-if !exists('g:neocomplete#sources#omni#input_patterns')
-    let g:neocomplete#sources#omni#input_patterns = {}
-endif
-let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
-
-inoremap <expr><TAB> pumvisible() ? "\<Down>" : "\<TAB>"
 
 " delimitMate
 let g:delimitMate_expand_cr = 1
@@ -224,8 +187,6 @@ if has("gui_running")
     "map <C-Right> :tabnext<CR>
     "map <C-Left>  :tabprevious<CR>
 
-    amenu My\ Stuff.Tabbed\ Tabbing :call TabbedTabbing()<CR>
-    amenu My\ Stuff.Spaced\ Tabbing :call SpacedTabbing()<CR>
     amenu My\ Stuff.Set\ Brace\ Folding :call SetBraceFolding()<CR>
     amenu My\ Stuff.Less\ Obtrusive\ Folds :call LessObtrusiveFolds()<CR>
     amenu My\ Stuff.-sep1- :

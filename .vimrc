@@ -13,6 +13,7 @@ endif
 
 call plug#begin()
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'fholgado/minibufexpl.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'mhinz/vim-startify'
@@ -135,6 +136,12 @@ endfunction
 
 "- Plugin settings -----------------------------------------
 
+"minibuxexplorer
+let g:miniBufExplBRSplit = 0
+let g:miniBufExplUseSingleClick = 1
+let g:miniBufExplMapWindowNavArrows = 1
+hi link MBEVisibleActiveNormal Identifier
+
 "ctrlp
 let g:ctrlp_cmd = "CtrlPMixed"
 let g:ctrlp_max_files = 0
@@ -148,8 +155,6 @@ let g:airline_left_sep = ""
 let g:airline_right_sep = ""
 let g:airline_section_b = "%n"
 "let g:airline_theme = "jellybeans"
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#buffer_nr_show = 1
 
 " delimitMate
 let g:delimitMate_expand_cr = 1

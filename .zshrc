@@ -23,6 +23,7 @@ antigen theme denysdovhan/spaceship-prompt
 antigen apply
 
 SPACESHIP_PROMPT_ORDER=(
+  pyenv         # Pyenv section
   time          # Time stamps section
   user          # Username section
   host          # Hostname section
@@ -42,9 +43,8 @@ SPACESHIP_PROMPT_ORDER=(
 #  julia         # Julia section
 #  docker        # Docker section
 #  aws           # Amazon Web Services section
-  venv          # virtualenv section
+#  venv          # virtualenv section
 #  conda         # conda virtualenv section
-  pyenv         # Pyenv section
 #  dotnet        # .NET section
 #  ember         # Ember.js section
 #  kubecontext   # Kubectl context section
@@ -66,6 +66,7 @@ SPACESHIP_CHAR_COLOR_SUCCESS="blue"
 SPACESHIP_CHAR_SUFFIX=" "
 
 SPACESHIP_HOST_SHOW="always"
+SPACESHIP_HOST_PREFIX=""
 SPACESHIP_HOST_SUFFIX=""
 SPACESHIP_HOST_COLOR="green"
 

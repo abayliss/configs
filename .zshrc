@@ -22,6 +22,8 @@ antigen theme denysdovhan/spaceship-prompt
 # Tell Antigen that you're done.
 antigen apply
 
+### Spaceship prompt setup
+
 SPACESHIP_PROMPT_ORDER=(
   pyenv         # Pyenv section
   time          # Time stamps section
@@ -79,3 +81,6 @@ SPACESHIP_GIT_PREFIX=""
 
 SPACESHIP_USER_SUFFIX="@"
 
+### aliases
+
+alias tmux="tmux -2"

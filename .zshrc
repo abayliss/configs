@@ -81,6 +81,23 @@ SPACESHIP_GIT_PREFIX=""
 
 SPACESHIP_USER_SUFFIX="@"
 
-### aliases
+SPACESHIP_PYENV_SUFFIX="  "
+
+# sample powerline characters for c'n'p
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+
+### aliases and stuff
 
 alias tmux="tmux -2"
+
+precmd () {
+    print -Pn "\e]0;${HOST}:${PWD/$HOME/\~}\a"
+}
+
+unsetopt share_history

@@ -21,6 +21,7 @@ Plug 'nanotech/jellybeans.vim'
 Plug 'scrooloose/NERDCommenter'
 Plug 'Raimondi/delimitMate'
 Plug 'haya14busa/incsearch.vim'
+Plug 'stephpy/vim-yaml'
 call plug#end()
 
 set bg=dark

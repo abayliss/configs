@@ -1,0 +1,14 @@
+# see https://github.com/getantidote/zdotdir/blob/main/.zsh_plugins.txt
+
+ohmyzsh/ohmyzsh path:lib
+
+ohmyzsh/ohmyzsh path:plugins/sudo
+
+spaceship-prompt/spaceship-prompt
+
+zsh-users/zsh-syntax-highlighting kind:defer
+zsh-users/zsh-completions path:src kind:fpath
+
+# These popular core plugins should be loaded at the end
+zsh-users/zsh-autosuggestions kind:defer
+zsh-users/zsh-history-substring-search

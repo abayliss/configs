@@ -1,9 +1,18 @@
+# basic zsh things
+
 setopt extended_glob
 
 autoload -Uz compinit
 compinit
 
-# Clone antidote if necessary.
+unsetopt share_history
+
+# start keychain if installed
+# add other keys if necessary
+[[ $(command -v keychain) ]] && eval `keychain --eval id_rsa`
+
+# fetch antidote if necessary and load it
+
 [[ -e ${ZDOTDIR:-$HOME}/.antidote ]] ||
   git clone https://github.com/mattmc3/antidote.git ${ZDOTDIR:-$HOME}/.antidote
 
@@ -11,49 +20,16 @@ source ${ZDOTDIR:-$HOME}/.antidote/antidote.zsh
 
 antidote load
 
-### Spaceship prompt setup
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
 
-SPACESHIP_PROMPT_ORDER=(python user host dir git exec_time line_sep jobs exit_code char)
-
-SPACESHIP_PROMPT_DEFAULT_PREFIX=" "
-SPACESHIP_PROMPT_DEFAULT_SUFFIX=" "
-SPACESHIP_PROMPT_ADD_NEWLINE=false
-
-SPACESHIP_CHAR_SYMBOL="$"
-SPACESHIP_CHAR_COLOR_SUCCESS="blue"
-SPACESHIP_CHAR_SUFFIX=" "
-
-SPACESHIP_HOST_SHOW="always"
-SPACESHIP_HOST_PREFIX=""
-SPACESHIP_HOST_SUFFIX=""
-SPACESHIP_HOST_COLOR="green"
-
-SPACESHIP_DIR_PREFIX=":"
-SPACESHIP_DIR_TRUNC=0
-SPACESHIP_DIR_TRUNC_REPO=false
-SPACESHIP_DIR_COLOR="yellow"
-SPACESHIP_GIT_PREFIX=""
-
-SPACESHIP_USER_SUFFIX="@"
-
-SPACESHIP_PYENV_SUFFIX="  "
-
-# sample powerline characters for c'n'p
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-
-### aliases and stuff
+# aliases
 
 alias tmux="tmux -2"
 
-precmd () {
-    print -Pn "\e]0;${HOST}:${PWD/$HOME/\~}\a"
-}
-
-unsetopt share_history
-
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

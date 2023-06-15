@@ -5,7 +5,7 @@ setopt extended_glob
 autoload -Uz compinit
 compinit
 
-unsetopt share_history
+unsetopt sharehistory
 
 # start keychain if installed
 # add other keys if necessary

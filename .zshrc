@@ -5,8 +5,6 @@ setopt extended_glob
 autoload -Uz compinit
 compinit
 
-unsetopt sharehistory
-
 # start keychain if installed
 # add other keys if necessary
 [[ $(command -v keychain) ]] && eval `keychain --eval id_rsa`
@@ -33,3 +31,7 @@ alias tmux="tmux -2"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# basic zsh things that for some reason need to happen at the end
+
+unsetopt sharehistory

@@ -179,6 +179,8 @@ if has("gui_running")
     colorscheme jellybeans
     if has("win32")
         set guifont=Consolas:h10
+    elseif has("macunix")
+        set guifont=SF\ Mono:12
     else
         set guifont=Ubuntu\ Mono\ 10
     endif

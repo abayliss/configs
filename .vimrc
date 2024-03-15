@@ -13,7 +13,6 @@ endif
 
 call plug#begin()
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'fholgado/minibufexpl.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'mhinz/vim-startify'
@@ -152,6 +151,7 @@ let g:ctrlp_lazy_update = 1
 let g:ctrlp_follow_symlinks = 1
 
 " airline
+let g:airline#extensions#tabline#enabled = 1
 let g:airline_left_sep = "" 
 let g:airline_right_sep = ""
 let g:airline_section_b = "%n"

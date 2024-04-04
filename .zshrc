@@ -5,6 +5,18 @@ setopt extended_glob
 autoload -Uz compinit
 compinit
 
+# set terminal title
+title_string=""
+if [ ! -z ${SSH_TTY} ]; then
+    title_string+="%n@%m:"
+fi
+title_string+="%~"
+case ${TERM} in
+    xterm*|screen*)
+        precmd () {print -Pn "\e]0;${title_string}\a"}
+        ;;
+esac
+
 # start keychain if installed
 # add other keys if necessary
 [[ $(command -v keychain) ]] && eval `keychain --eval id_rsa`
@@ -35,3 +47,6 @@ alias tmux="tmux -2"
 # basic zsh things that for some reason need to happen at the end
 
 unsetopt sharehistory
+
+# finally deduplicate PATH, keeps the first seen entry for each dir
+#export PATH=$(perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, $ENV{PATH}))')

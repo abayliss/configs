@@ -124,6 +124,10 @@ endif
 
 "- Other ---------------------------------------------------
 
+" move through buffers
+nnoremap <C-h> :bp<CR>
+nnoremap <C-l> :bn<CR>
+
 " clear current search pattern
 map <leader>s :let @/=''<CR>
 

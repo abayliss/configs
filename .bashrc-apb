@@ -1,11 +1,9 @@
 PS1="\\[\\e[1m\\]\\[\\e[32m\\]\\u@\\h\\[\\e[36m\\]:\\[\\e[33m\\]\\w\\[\\e[0m\\]\\n\\[\\e[1m\\]\\[\\e[36m\\]\\$\\[\\e[0m\\] "
 PS2="\\[\\e[1m\\]\\[\\e[36m\\]>\\[\\e[0m\\] "
 
-# make ssh-agent work within screen sessions (also see .screenrc)
-_ssh_auth_save() {
-    ln -sf "$SSH_AUTH_SOCK" "$HOME/.screen/ssh-auth-sock.$HOSTNAME"
-}
-alias screen='_ssh_auth_save ; screen'
+# start keychain if installed
+# add other keys if necessary
+[[ $(command -v keychain) ]] && eval `keychain --eval id_rsa`
 
 # set screen/tmux titles as well as xterm titles
 case $TERM in
@@ -22,17 +20,26 @@ case $TERM in
     ;;
 esac
 
-# set an arbitrary xterm title
-function termtitle {
-    echo "Have you unset PROMPT_COMMAND?"
-    echo -ne "\033]0;$1\007"
-}
+# warn about auto-logout if we can't easily unset it
+if [[ ! -z $TMOUT ]]; then
+    unset TMOUT > /dev/null 2>&1
+    if [ $? -ne 0 ]; then
+        echo "⚠️ [1;31mWarning! TMOUT is set and I couldn't unset it![0m⚠️"
+        echo ""
+    fi
+fi
+
+# forcibly disable auto-logout
+# unset TMOUT > /dev/null 2>&1
+# if [ $? -ne 0 ]; then
+#     which gdb > /dev/null 2>&1
+#     if [ $? -eq 0 ]; then
+#         gdb -ex 'call (int) unbind_variable("TMOUT")' --pid=$$ --batch-silent
+#     fi
+# fi
 
 export ACK_COLOR_FILENAME='underline bold cyan'
 export ACK_COLOR_MATCH='underline bold yellow'
 
-export GPGKEY="A902A3A9"
-
 alias tmux="tmux -2"
 
-alias add_ssh_keys="for k in ~/.ssh/*id_{dsa,rsa,ecdsa,ed25519}; do if [ -f \$k ]; then ssh-add \$k; fi; done; ssh-add -l"

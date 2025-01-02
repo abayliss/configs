@@ -28,74 +28,88 @@ vim.keymap.set("n", "<C-l>", ":bn<CR>")
 
 -- plugins --
 
+-- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
-	vim.fn.system({
-		"git",
-		"clone",
-		"--filter=blob:none",
-		"https://github.com/folke/lazy.nvim.git",
-		"--branch=stable",
-		lazypath,
-	})
+  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+  if vim.v.shell_error ~= 0 then
+    vim.api.nvim_echo({
+      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+      { out, "WarningMsg" },
+      { "\nPress any key to exit..." },
+    }, true, {})
+    vim.fn.getchar()
+    os.exit(1)
+  end
 end
 vim.opt.rtp:prepend(lazypath)
 
-
 local plugins = {
-	{
-		'Mofiqul/vscode.nvim',
-		lazy = false,
-		priority = 1000,
-		config = function()
-			require('vscode').setup()
-			require('vscode').load()
-		end
-	},
-	{
-		'nvim-lualine/lualine.nvim',
-		dependencies = { 'nvim-tree/nvim-web-devicons' },
-		opts = {
-			theme = 'vscode'
-		}
-	},
-	{'romgrk/barbar.nvim',
-		dependencies = {
-			'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
-			'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
-		},
-		init = function()
-			vim.g.barbar_auto_setup = false
-		end
-	},
-	{'nvim-treesitter/nvim-treesitter'},
-	{
-		"nvim-neo-tree/neo-tree.nvim",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-tree/nvim-web-devicons",
-			"MunifTanjim/nui.nvim",
-		},
-        keys = {
-            {"n", "<leader>/", ":Neotree toggle current reveal_force_cwd<cr>"}
+    {
+        'Mofiqul/vscode.nvim',
+        lazy = false,
+        priority = 1000,
+        config = function()
+            require('vscode').setup()
+            require('vscode').load()
+        end
+    },
+    {
+        'nvim-lualine/lualine.nvim',
+        dependencies = { 'nvim-tree/nvim-web-devicons' },
+        opts = {
+            theme = 'vscode'
         }
-	},
-	{
-		'nvimdev/dashboard-nvim',
-		event = 'VimEnter',
-		dependencies = { {'nvim-tree/nvim-web-devicons'}}
-	},
-	{
-		'numToStr/Comment.nvim',
-		lazy = false,
-	},
-	{
-    'windwp/nvim-autopairs',
-		event = "InsertEnter",
-		config = true
-	}
+    },
+    {
+        'romgrk/barbar.nvim',
+        dependencies = {
+            'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
+            'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
+        },
+        init = function()
+            vim.g.barbar_auto_setup = false
+        end
+    },
+    {'nvim-treesitter/nvim-treesitter'},
+    {
+        "nvim-neo-tree/neo-tree.nvim",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-tree/nvim-web-devicons",
+            "MunifTanjim/nui.nvim",
+        },
+        -- keys = {
+        --     {"n", "<leader>/", ":Neotree toggle current reveal_force_cwd<cr>"}
+        -- }
+    },
+    {
+        'nvimdev/dashboard-nvim',
+        event = 'VimEnter',
+        config = function()
+            require('dashboard').setup()
+        end,
+        dependencies = { 'nvim-tree/nvim-web-devicons' }
+    },
+    {
+        'numToStr/Comment.nvim',
+        lazy = false,
+        config = function()
+            require('Comment').setup()
+        end
+    },
+    {
+        'windwp/nvim-autopairs',
+        event = "InsertEnter",
+        config = true
+    }
 }
 
-local opts = {}
+local opts = {
+    checker = {
+        enabled = true
+    }
+}
 
 require("lazy").setup(plugins, opts)

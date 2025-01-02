@@ -1,7 +1,7 @@
 -- vim settings --
 
 vim.o.showmatch = true
-vim.o.hlsearh = true
+vim.o.hlsearch = true
 vim.o.title = true
 vim.o.number = true
 
